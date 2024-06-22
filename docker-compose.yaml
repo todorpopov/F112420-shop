@@ -1,0 +1,29 @@
+version: "3.8"
+
+services:
+  java-app:
+    container_name: java-app
+    build:
+      dockerfile: Dockerfile
+    depends_on:
+      - db
+    networks:
+      - default
+
+  db:
+    container_name: db
+    image: postgres:13-alpine
+    volumes:
+      - ./psql_data/:/var/lib/postgresql/data/
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_DB=java-test
+      - POSTGRES_USER=java-test
+      - POSTGRES_PASSWORD=java-test
+    networks:
+      - default
+
+networks:
+  default:
+    driver: bridge
