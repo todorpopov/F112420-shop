@@ -1,18 +1,9 @@
 version: "3.8"
 
 services:
-  java-app:
-    container_name: java-app
-    build:
-      dockerfile: Dockerfile
-    depends_on:
-      - db
-    networks:
-      - default
-
   db:
     container_name: db
-    image: postgres:13-alpine
+    image: postgres:16.3-alpine
     volumes:
       - ./psql_data/:/var/lib/postgresql/data/
     ports:
@@ -23,17 +14,6 @@ services:
       - POSTGRES_PASSWORD=java-test
     networks:
       - default
-  
-  pgadmin:
-    container_name: pgadmin
-    image: dpage/pgadmin4
-    ports:
-      - "8888:80"
-    environment:
-      PGADMIN_DEFAULT_EMAIL: todorpopov02@gmail.com
-      PGADMIN_DEFAULT_PASSWORD: pgadmin
-    volumes:
-      - ./pgadmin_data/:/var/lib/pgadmin
 
 networks:
   default:

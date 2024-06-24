@@ -1,4 +1,5 @@
+/target
 /psql_data
 /pgadmin_data
 /.vscode
-/target
+/.idea
