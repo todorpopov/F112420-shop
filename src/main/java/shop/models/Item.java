@@ -1,7 +1,6 @@
 package shop.models;
 
 import java.time.LocalDate;
-
 import javax.persistence.*;
 
 import shop.exceptions.InsufficientQuantityException;

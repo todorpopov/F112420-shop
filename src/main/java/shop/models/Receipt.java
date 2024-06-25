@@ -2,8 +2,6 @@ package shop.models;
 
 import java.time.LocalDate;
 import java.util.HashMap;
-import java.util.Set;
-
 import javax.persistence.*;
 
 @Entity
