@@ -38,9 +38,10 @@ public class AccessReceipt {
     public static void deleteOne(int id) {
         SessionFactory sessionFactory = SessionFactoryProvider.provideSessionFactory();
         Session session = sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
         Receipt receipt = session.get(Receipt.class, id);
         session.delete(receipt);
-        session.flush();
+        transaction.commit();
         sessionFactory.close();
     }
 }

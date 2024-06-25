@@ -24,6 +24,7 @@ public class Shop {
     private List<Item> items;
 
 
+    public Shop(){}
     public Shop(String name, double markupPercentage){
         this.name = name;
         this.markupPercentage = markupPercentage;

@@ -15,11 +15,11 @@ public class Receipt {
     @Column(name = "number")
     public static int number;
 
-    @Column(name = "shop")
-    private Shop shop;
+    @Column(name = "shop-name")
+    private String shopName;
 
-    @Column(name = "checkout")
-    private Checkout checkout;
+    @Column(name = "checkout-id")
+    private int checkoutId;
 
     @Column(name = "items")
     private HashMap<Item, Integer> items;
@@ -31,9 +31,10 @@ public class Receipt {
     private double total;
 
 
+    public Receipt(){}
     public Receipt(Shop shop, Checkout checkout, HashMap<Item, Integer> items, double total){
-        this.shop = shop;
-        this.checkout = checkout;
+        this.shopName = shop.getName();
+        this.checkoutId = checkout.getId();
         this.items = items;
         this.total = total;
 
@@ -45,8 +46,8 @@ public class Receipt {
         System.out.println(
             "Receipt ID: " + this.id + "\n" +
             "Receipt number: " + Receipt.number + "\n" +
-            "Shop: " + this.shop.getName() + "\n" +
-            "Checkout id: " + this.checkout.getId() + "\n" +
+            "Shop: " + this.shopName + "\n" +
+            "Checkout id: " + this.checkoutId + "\n" +
             "Date: " + this.date + "\n" +
             "Total: " + this.total + "\n" +
             "Items:\n"
@@ -57,6 +58,6 @@ public class Receipt {
     }
 
     public String getStr(){
-        return this.id + " " + this.shop + " " + this.date;
+        return this.id + " " + this.shopName + " " + this.date;
     }
 }

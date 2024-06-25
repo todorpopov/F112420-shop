@@ -36,7 +36,8 @@ public class Item {
     private LocalDate expiry;
 
 
-    public Item(Shop shop, String name, int deliveryPrice, int quantity, Category category, LocalDate expiry){
+    // public Item(){}
+    public Item(Shop shop, String name, double deliveryPrice, int quantity, Category category, LocalDate expiry){
         this.shop = shop;
         this.name = name;
         this.deliveryPrice = deliveryPrice;
@@ -77,7 +78,7 @@ public class Item {
     }
 
     public String getStr(){
-        return this.name + "(" + this.category + ")" + " - " + this.finalPrice;
+        return this.name + "(" + this.category + ")" + ": " + this.deliveryPrice + " | " + this.finalPrice;
     }
 
     public Shop getShop(){

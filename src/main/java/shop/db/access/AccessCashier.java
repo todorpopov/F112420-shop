@@ -39,9 +39,10 @@ public class AccessCashier{
     public static void deleteOne(int id) {
         SessionFactory sessionFactory = SessionFactoryProvider.provideSessionFactory();
         Session session = sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
         Cashier cashier = session.get(Cashier.class, id);
         session.delete(cashier);
-        session.flush();
+        transaction.commit();
         sessionFactory.close();
     }
 }

@@ -38,9 +38,10 @@ public class AccessCheckout {
     public static void deleteOne(int id) {
         SessionFactory sessionFactory = SessionFactoryProvider.provideSessionFactory();
         Session session = sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
         Checkout checkout = session.get(Checkout.class, id);
         session.delete(checkout);
-        session.flush();
+        transaction.commit();
         sessionFactory.close();
     }
 }

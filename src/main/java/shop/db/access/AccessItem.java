@@ -38,9 +38,10 @@ public class AccessItem {
     public static void deleteOne(int id) {
         SessionFactory sessionFactory = SessionFactoryProvider.provideSessionFactory();
         Session session = sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
         Item item = session.get(Item.class, id);
         session.delete(item);
-        session.flush();
+        transaction.commit();
         sessionFactory.close();
     }
 }

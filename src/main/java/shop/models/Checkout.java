@@ -17,6 +17,8 @@ public class Checkout {
     @JoinColumn(name = "cashier")
     private Cashier cashier;
 
+    
+    public Checkout(){}
     public Checkout(Shop shop){
         this.shop = shop;
     }
