@@ -12,7 +12,7 @@ public class Item {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private Long id;
+    private int id;
 
     @ManyToOne
     private Shop shop;
@@ -21,10 +21,10 @@ public class Item {
     private String name;
 
     @Column(name = "delivery-price")
-    private float deliveryPrice;
+    private double deliveryPrice;
 
     @Column(name = "final-price")
-    private float finalPrice;
+    private double finalPrice;
 
     @Column(name = "quantity")
     private int quantity;
@@ -47,7 +47,7 @@ public class Item {
     }
 
     private void setFinalPrice(){
-        float shopMarkupPercentage = this.shop.getMarkupPercentage();
+        double shopMarkupPercentage = this.shop.getMarkupPercentage();
         this.finalPrice = this.deliveryPrice + (shopMarkupPercentage * deliveryPrice);
     }
 
@@ -88,7 +88,7 @@ public class Item {
         return this.name;
     }
 
-    public float getDeliveryPrice(){
+    public double getDeliveryPrice(){
         return this.deliveryPrice;
     }
 

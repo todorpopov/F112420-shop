@@ -1,6 +1,6 @@
 package shop.models;
 
-import java.util.Set;
+import java.util.List;
 import javax.persistence.*;
 
 @Entity
@@ -9,22 +9,22 @@ public class Shop {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private Long id;
+    private int id;
     
     @Column(name = "name")
     private String name;
 
     @Column(name = "markup-percentage")
-    private float markupPercentage;
+    private double markupPercentage;
 
     @OneToMany(mappedBy = "shop")
-    private Set<Checkout> checkouts;
+    private List<Checkout> checkouts;
     
     @OneToMany(mappedBy="shop")
-    private Set<Item> items;
+    private List<Item> items;
 
 
-    public Shop(String name, float markupPercentage){
+    public Shop(String name, double markupPercentage){
         this.name = name;
         this.markupPercentage = markupPercentage;
     }
@@ -41,15 +41,15 @@ public class Shop {
         return this.name;
     }
 
-    public float getMarkupPercentage() {
+    public double getMarkupPercentage() {
         return this.markupPercentage;
     }
 
-    public Set<Item> getItems(){
+    public List<Item> getItems(){
         return this.items;
     }
 
-    public Set<Checkout> Checkouts(){
+    public List<Checkout> Checkouts(){
         return this.checkouts;
     }
 }

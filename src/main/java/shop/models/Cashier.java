@@ -8,21 +8,21 @@ public class Cashier {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private Long id;
+    private int id;
     
     @Column(name = "name")
     private String name;
 
     @Column(name = "salary")
-    private float salary;
+    private double salary;
 
-
-    public Cashier(String name, float salary){
+    public Cashier(){}
+    public Cashier(String name, double salary){
         this.name = name;
         this.salary = salary;
     }
 
-    public Long getId(){
+    public int getId(){
         return this.id;
     }
 
@@ -30,7 +30,7 @@ public class Cashier {
         return this.name;
     }
 
-    public float getSalary(){
+    public double getSalary(){
         return this.salary;
     }
 }

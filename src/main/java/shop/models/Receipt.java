@@ -10,7 +10,7 @@ public class Receipt {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private Long id;
+    private int id;
     
     @Column(name = "number")
     public static int number;
@@ -28,10 +28,10 @@ public class Receipt {
     private LocalDate date;
 
     @Column(name = "total")
-    private float total;
+    private double total;
 
 
-    public Receipt(Shop shop, Checkout checkout, HashMap<Item, Integer> items, float total){
+    public Receipt(Shop shop, Checkout checkout, HashMap<Item, Integer> items, double total){
         this.shop = shop;
         this.checkout = checkout;
         this.items = items;

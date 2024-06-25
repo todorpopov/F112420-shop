@@ -1,36 +1,38 @@
 package shop.project;
 
 import shop.menus.MainMenu;
-import shop.models.Item;
+import shop.models.Cashier;
 
+import java.util.List;
 
 import org.hibernate.Session; 
 import org.hibernate.SessionFactory; 
-import org.hibernate.Transaction;
 
 import shop.db.SessionFactoryProvider;
-import shop.utils.Utilities;
+import shop.db.access.AccessCashier;
 
 public class App 
 {
     public static void main( String[] args )
     {
-        // try{
-        //     SessionFactory sessionFactory = SessionFactoryProvider.provideSessionFactory();
-        //     Session session = sessionFactory.openSession();
-        //     Transaction t = session.beginTransaction();
+        // SessionFactory sessionFactory = SessionFactoryProvider.provideSessionFactory();
+        // Session session = sessionFactory.getCurrentSession();
 
-        //     User user1 = new User("John");
-        //     System.out.println(user1.getId());
-        //     session.save(user1);
-        //     t.commit();
+        // new MainMenu();
+        // Cashier cashier = new Cashier("John", 1000.00);
+        // AccessCashier.saveOne(cashier);
 
-        //     sessionFactory.close();
-        // }
-        // catch(Exception e){
-        //     System.out.println(e);
-        // }
-        new MainMenu();
+        // List<Cashier> list = AccessCashier.getAll();
+        // list.forEach(item -> {
+        //     System.out.println(item.getName());
+        // });
 
+        System.out.println(AccessCashier.getOne(1));
+    }
+
+    public static Session currentSession(){
+        SessionFactory sessionFactory = SessionFactoryProvider.provideSessionFactory();
+        Session session = sessionFactory.openSession();
+        return session;
     }
 }

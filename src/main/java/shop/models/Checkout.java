@@ -8,7 +8,7 @@ public class Checkout {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private Long id;
+    private int id;
     
     @ManyToOne
     private Shop shop;
@@ -29,7 +29,7 @@ public class Checkout {
         this.cashier = null;
     }
 
-    public Long getId(){
+    public int getId(){
         return this.id;
     }
 

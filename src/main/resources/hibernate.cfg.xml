@@ -16,7 +16,10 @@
 		<property name="show_sql">false</property> <!-- Show SQL in console -->
 		<property name="format_sql">true</property> <!-- Show SQL formatted -->
 		
-		<mapping class="shop.models.User"/>
+		<mapping class="shop.models.Cashier"/>
+		<!-- <mapping class="shop.models.Cashier"/>
+		<mapping class="shop.models.Cashier"/>
+		<mapping class="shop.models.Cashier"/> -->
 		
 	</session-factory>
 </hibernate-configuration>
