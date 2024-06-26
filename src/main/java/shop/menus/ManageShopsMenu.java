@@ -1,7 +1,10 @@
 package shop.menus;
 
+import java.util.List;
 import java.util.Scanner;
 
+import shop.db.access.AccessShop;
+import shop.models.Shop;
 import shop.utils.Utilities;
 
 public class ManageShopsMenu implements MenuInterface {
@@ -28,10 +31,16 @@ public class ManageShopsMenu implements MenuInterface {
     public void action(){
         switch (this.inputData){
             case 1: {
+                this.createShop();
+                break;
             }
             case 2: {
+                this.listExistingShops();
+                break;
             }
             case 3: {
+                this.deleteOneShop();
+                break;
             }
             case 0: {
                 new AdminMenu();
@@ -41,5 +50,37 @@ public class ManageShopsMenu implements MenuInterface {
                 new ManageShopsMenu();
             }
         }
+    }
+
+    private void createShop(){
+        Utilities.clearScreen();
+
+        Scanner input = new Scanner(System.in);
+        String name = Utilities.getStringInput("Enter Shop name: ", input);
+        double markupPercentage = Utilities.getDoubleInput("Enter markup percentage: ", input);
+
+        Shop shop = new Shop(name, markupPercentage);
+        AccessShop.saveOne(shop);
+    }
+
+    private void listExistingShops(){
+        Utilities.clearScreen();
+        List<Shop> shops = AccessShop.getAll();
+        Utilities.clearScreen();
+
+        shops.forEach(shop -> {
+            System.out.println(shop.getStr());
+        });
+
+        Utilities.pressToContinue();
+    }
+
+    private void deleteOneShop(){
+        Utilities.clearScreen();
+
+        Scanner input = new Scanner(System.in);
+        int id = Utilities.getIntegerInput("Enter shop's ID: ", input);
+
+        AccessShop.deleteOne(id);
     }
 }

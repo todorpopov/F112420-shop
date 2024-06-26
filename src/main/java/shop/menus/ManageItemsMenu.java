@@ -1,7 +1,6 @@
 package shop.menus;
 
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Scanner;
 
@@ -61,36 +60,15 @@ public class ManageItemsMenu implements MenuInterface {
         Utilities.clearScreen();
 
         Scanner input = new Scanner(System.in);
-
-        System.out.println("Enter name: ");
-        String name = input.nextLine();
-
-        System.out.println("Enter shop id: ");
-        int shopId = input.nextInt();
-
-        System.out.println("Enter delivery price: ");
-        double deliveryPrice = input.nextDouble();
-
-        System.out.println("Enter quantity: ");
-        int quantity = input.nextInt();
-
-        System.out.println("Food or Non-food (1/2): ");
-        int categoryNum = input.nextInt();
-
-        Category category = null;
-        if(categoryNum == 1){
-            category = Category.Food;
-        }
-        else{
-            category = Category.NonFood;
-        }
-
-        System.out.println("Enter expiration date: ");
-        String expiryString = input.next();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-        LocalDate expiry = LocalDate.parse(expiryString, formatter);
+        String name = Utilities.getStringInput("Enter item name: ", input);
+        int shopId = Utilities.getIntegerInput("Enter shop id: ", input);
+        double deliveryPrice = Utilities.getDoubleInput("Enter delivery price: ", input);
+        int quantity = Utilities.getIntegerInput("Enter delivery quantity: ", input);
+        Category category = Utilities.getCategoryInput("Enter category (Food/NonFood): ", input);
+        LocalDate expiry = Utilities.getDate("Enter expiration date (yyyy-MM-dd): ", input);
         
         Shop shop = AccessShop.getOne(shopId);
+
         Item item = new Item(shop, name, deliveryPrice, quantity, category, expiry);
         AccessItem.saveOne(item);
     }
@@ -111,8 +89,7 @@ public class ManageItemsMenu implements MenuInterface {
         Utilities.clearScreen();
 
         Scanner input = new Scanner(System.in);
-        System.out.println("Enter the item's id you want to delete: ");
-        int id = input.nextInt();
+        int id = Utilities.getIntegerInput("Enter cashier's ID: ", input);
 
         AccessItem.deleteOne(id);
     }

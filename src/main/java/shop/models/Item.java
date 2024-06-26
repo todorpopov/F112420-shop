@@ -15,6 +15,7 @@ public class Item {
     private int id;
 
     @ManyToOne
+    @JoinColumn(name="shop_id", nullable=true)
     private Shop shop;
     
     @Column(name = "name")

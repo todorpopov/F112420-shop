@@ -17,17 +17,24 @@ public class Shop {
     @Column(name = "markup-percentage")
     private double markupPercentage;
 
-    @OneToMany(mappedBy = "shop")
+    @OneToMany
+    @JoinColumn(name = "shop_id", nullable = true)
     private List<Checkout> checkouts;
     
-    @OneToMany(mappedBy="shop")
+    @OneToMany
+    @JoinColumn(name = "shop_id", nullable = true)
     private List<Item> items;
 
 
-    public Shop(){}
     public Shop(String name, double markupPercentage){
         this.name = name;
         this.markupPercentage = markupPercentage;
+        this.checkouts = null;
+        this.items = null;
+    }
+
+    public String getStr(){
+        return this.id + " " + this.name + " " + this.markupPercentage;
     }
 
     public void addCheckout(Checkout checkout){

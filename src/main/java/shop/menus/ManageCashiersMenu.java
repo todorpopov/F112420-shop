@@ -57,10 +57,8 @@ public class ManageCashiersMenu implements MenuInterface {
         Utilities.clearScreen();
 
         Scanner input = new Scanner(System.in);
-        System.out.println("Enter name: ");
-        String name = input.nextLine();
-        System.out.println("Enter salary: ");
-        float salary = input.nextFloat();
+        String name = Utilities.getStringInput("Enter name: ", input);
+        double salary = Utilities.getDoubleInput("Enter salary: ", input);
 
         Cashier cashier = new Cashier(name, salary);
         AccessCashier.saveOne(cashier);
@@ -82,8 +80,7 @@ public class ManageCashiersMenu implements MenuInterface {
         Utilities.clearScreen();
 
         Scanner input = new Scanner(System.in);
-        System.out.println("Enter the cashier's id you want to delete: ");
-        int id = input.nextInt();
+        int id = Utilities.getIntegerInput("Enter cashier's ID: ", input);
 
         AccessCashier.deleteOne(id);
     }

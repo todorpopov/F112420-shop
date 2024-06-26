@@ -16,11 +16,11 @@
 		<property name="show_sql">false</property> <!-- Show SQL in console -->
 		<property name="format_sql">true</property> <!-- Show SQL formatted -->
 		
+		<mapping class="shop.models.Shop"/>
 		<mapping class="shop.models.Cashier"/>
 		<mapping class="shop.models.Checkout"/>
 		<mapping class="shop.models.Item"/>
 		<mapping class="shop.models.Receipt"/>
-		<mapping class="shop.models.Shop"/>
 
 	</session-factory>
 </hibernate-configuration>

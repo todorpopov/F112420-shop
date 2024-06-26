@@ -11,6 +11,7 @@ public class Checkout {
     private int id;
     
     @ManyToOne
+    @JoinColumn(name="shop_id", nullable=true)
     private Shop shop;
 
     @OneToOne(cascade = CascadeType.ALL)
